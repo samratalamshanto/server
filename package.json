@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Samrat Alam",
+  "license": "ISC",
+  "dependencies": {
+    "axois": "0.0.1-security",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongodb": "^4.6.0",
+    "mongoose": "^6.3.5",
+    "moongoose": "0.0.5",
+    "nodemon": "^2.0.16",
+    "react-redux": "^8.0.2"
+  }
+}
