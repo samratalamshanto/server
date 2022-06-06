@@ -1,8 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://thriving-blancmange-7a9ed1.netlify.app/",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -26,8 +27,7 @@ app.use(function (req, res, next) {
 
 const router = require("./routes/router.js");
 
-const url =
-  "mongodb+srv://samrat:sas1607022@cluster0.bvu6ziy.mongodb.net/Portfolio?retryWrites=true&w=majority";
+const url = process.env.MONGOOESURL;
 
 const config = {
   useNewUrlParser: true,
@@ -44,7 +44,6 @@ mongoose
 //connect to routes
 
 app.use("/", router);
-
 app.get("/", (req, res) => {
   res.send("helllooo!! we are in api");
   console.log("Helloo");
