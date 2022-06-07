@@ -1,9 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 const cors = require("cors");
 const corsOptions = {
-  origin: "https://thriving-blancmange-7a9ed1.netlify.app/",
+  origin: "http://localhost:5000",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -25,6 +26,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(express.static(path.join(__dirname + "/public")));
 const router = require("./routes/router.js");
 
 const url = process.env.MONGOOESURL;

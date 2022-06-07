@@ -42,15 +42,3 @@ router.route("/create").post(async (req, res) => {
 });
 
 module.exports = router;
-
-// await newData.save((err) => {
-//   if (err) {
-//     res.status(500).json({
-//       error: "There was a error. Failed",
-//     });
-//   } else {
-//     res.status(200).json({
-//       msg: "successful",
-//     });
-//   }
-// });
