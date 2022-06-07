@@ -3,12 +3,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
+const port = process.env.PORT || 5000;
+
 const corsOptions = {
-  origin: "http://localhost:5000",
+  origin: `https://samrat-alam.herokuapp.com:${port}/create`,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
-const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors(corsOptions));
