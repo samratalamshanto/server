@@ -6,7 +6,7 @@ const cors = require("cors");
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: "https://samrat-alam.herokuapp.com",
+  origin: `https://samrat-alam.herokuapp.com:${port}`,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
