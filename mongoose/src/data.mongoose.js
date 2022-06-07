@@ -10,6 +10,11 @@ const dataSchema = mongoose.Schema({
   msg: {
     type: String,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+
 });
 
 module.exports = dataSchema;
