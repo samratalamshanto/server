@@ -4,6 +4,14 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
 const port = process.env.PORT || 5000;
+const app = express();
+
+//setup
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//
+app.set("view engine", "ejs");
 
 const corsOptions = {
   origin: `https://samrat-alam.herokuapp.com:${port}`,
@@ -11,7 +19,6 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
-const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(function (req, res, next) {
@@ -29,6 +36,8 @@ app.use(function (req, res, next) {
 
 app.use(express.static(path.join(__dirname + "/public")));
 const router = require("./routes/router.js");
+const router_projects = require("./routes/router.add.projects");
+const projects_data_only = require("./routes/projectDataOnly");
 
 const url = process.env.MONGOOESURL;
 
@@ -45,7 +54,8 @@ mongoose
   });
 
 //connect to routes
-
+app.use("/projectsdataonly", projects_data_only);
+app.use("/moreprojects", router_projects);
 app.use("/", router);
 app.get("/", (req, res) => {
   res.send("helllooo!! we are in api");

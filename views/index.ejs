@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+</head>
+
+<body>
+
+
+    <h1>Add Projects:</h1>
+
+    <div>
+        <form action="/moreprojects" method="post">
+            <input type="text" name="project_name" placeholder="Project Name" value="" required />
+            <input type="text" name="project_link" placeholder="Project Link" value="" required />
+            <input type="text" name="year" placeholder="Year" value="" required />
+
+            <br>
+            <input type="submit" value="Add Project" />
+
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+    <br>
+    <hr>
+    <div>
+        <br>
+        <br>
+        <h1>
+            Projects:
+        </h1>
+        <div>
+            <% fetchProject.forEach((project)=>{ %>
+                <li>
+                    project name: <%= project.project_name %>,
+                        project link: <%= project.project_link %>,
+                            year: <%= project.year%>
+                </li>
+                <a href="/moreprojects/<%= project._id %>/delete">Delete</a>
+                <% }) %>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div>
+
+    </div>
+
+</body>
+<script>
+    document.querySelector('input').focus();
+</script>
+
+</html>
