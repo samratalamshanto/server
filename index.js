@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname + "/public")));
 const router = require("./routes/router.js");
 const router_projects = require("./routes/router.add.projects");
 const projects_data_only = require("./routes/projectDataOnly");
+const msg_from_others = require("./routes/msgRoute");
 
 const url = process.env.MONGOOESURL;
 
@@ -54,6 +55,7 @@ mongoose
   });
 
 //connect to routes
+app.use("/msgdataonly", msg_from_others);
 app.use("/projectsdataonly", projects_data_only);
 app.use("/moreprojects", router_projects);
 app.use("/", router);

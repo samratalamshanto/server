@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+</head>
+
+<body>
+
+    <br>
+
+    <div>
+
+        <h1>
+            Msg:
+        </h1>
+        <div>
+            <% fetchMsg.forEach((msg)=>{ %>
+                <li>
+                    <h4>Date: </h4>
+                    <%=msg.date%> <br>
+                        <h4> Name:</h4>
+                        <%= msg.name %>
+                            <h4> Email:</h4>
+                            <%= msg.email %>
+                                <h4> Msg:</h4>
+                                <%= msg.msg%> <br>
+
+                </li>
+                <hr>
+
+                <% }) %>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div>
+
+    </div>
+
+</body>
+
+
+</html>
