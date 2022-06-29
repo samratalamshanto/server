@@ -1,4 +1,6 @@
+require("dotenv").config();
 const express = require("express");
+var nodemailer = require("nodemailer");
 const { mongoose } = require("mongoose");
 const router = express.Router();
 
@@ -15,10 +17,35 @@ router.get("/create", (req, res) => {
   );
 });
 router.route("/create").post(async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const msg = req.body.msg;
-  console.log(req.body);
+  const { name, email, msg } = req.body;
+
+  //Email---------
+
+  var transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "samratalamshanto710@gmail.com",
+      pass: process.env.EMAILPASS,
+    },
+  });
+
+  var mailOptions = {
+    from: email,
+    to: "samratalamshanto710@gmail.com",
+    subject: `Sending Email from ${name}!!!!`,
+    text: msg,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+
+  //-----------------
+
   const newData = new dataModel({
     name,
     email,
