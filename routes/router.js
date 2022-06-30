@@ -17,6 +17,7 @@ router.get("/create", (req, res) => {
   );
 });
 router.route("/create").post(async (req, res) => {
+  console.log(req.body);
   const { name, email, msg } = req.body;
 
   //Email---------
@@ -24,16 +25,37 @@ router.route("/create").post(async (req, res) => {
   var transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "samratalamshanto710@gmail.com",
+      user: "alam1607022@stud.kuet.ac.bd",
       pass: process.env.EMAILPASS,
     },
   });
 
+  var mailOutput =
+    "<html>\n\
+                        <body>\n\
+                        <table>\n\
+                        <tr>\n\
+                        <td>Name: </td>" +
+    name +
+    "<td></td>\n\
+                        </tr>\n\
+                        <tr>\n\
+                        <td>Email: </td><td>" +
+    email +
+    "</td>\n\
+                        </tr>\n\
+                        <tr>\n\
+                        <td>Message: </td>" +
+    msg +
+    "<td></td>\n\
+                        </tr>\n\
+                        </table></body></html>";
+
   var mailOptions = {
     from: email,
-    to: "samratalamshanto710@gmail.com",
+    to: "alam1607022@stud.kuet.ac.bd",
     subject: `Sending Email from ${name}!!!!`,
-    text: msg,
+    html: mailOutput,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
