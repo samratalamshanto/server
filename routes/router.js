@@ -16,6 +16,7 @@ router.get("/create", (req, res) => {
     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
   );
 });
+
 router.route("/create").post(async (req, res) => {
   console.log(req.body);
   const { name, email, msg } = req.body;
@@ -59,6 +60,51 @@ router.route("/create").post(async (req, res) => {
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+
+  var mailOutput1 =
+    "<html>\n\
+  <body>\n\
+  <table>\n\
+  <tr>\n\
+  Hello " +
+    name +
+    ",<td></td>\n\
+  </tr>\n\
+  <tr>\n\
+  <td>Thanks for your message. I will respond to your message shortly. I'll get back to you. Thank You.</td><td>" +
+    "</td>\n\
+  </tr>\n \n \n\
+  <tr>\n \n \n  Best Regards," +
+    "<td></td>\n\
+  </tr>\n\
+  <tr>\n\
+Samrat Alam " +
+    "<td></td>\n\
+    <tr>\n\
+B.Sc in CSE, KUET " +
+    "<td></td>\n\
+    <tr>\n\
+Mobile: 01674937832" +
+    "<td></td>\n\
+    <tr>\n\
+Mail: samratalamshanto710@gmail.com" +
+    "<td></td>\n\
+  </table></body></html>";
+
+  var mailOptions1 = {
+    from: "alam1607022@stud.kuet.ac.bd",
+    to: email,
+    subject: `Message Received !!!!`,
+    html: mailOutput1,
+  };
+
+  transporter.sendMail(mailOptions1, function (error, info) {
     if (error) {
       console.log(error);
     } else {
