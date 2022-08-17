@@ -72,12 +72,12 @@ router.route("/create").post(async (req, res) => {
   <body>\n\
   <table>\n\
   <tr>\n\
-  Hello " +
+  Hello Mr./Ms" +
     name +
     ",<td></td>\n\
   </tr>\n\
   <tr>\n\
-  <td>Thanks for your message. I will respond to your message shortly. I'll get back to you. Thank You.</td><td>" +
+  <td>Thank you for your text. I’ll contact with you as soon as possible. Again Thank You for your time. Have a nice day.</td><td>" +
     "</td>\n\
   </tr>\n \n \n\
   <tr>\n \n \n  Best Regards," +
@@ -100,7 +100,7 @@ Mail: samratalamshanto710@gmail.com" +
   var mailOptions1 = {
     from: "alam1607022@stud.kuet.ac.bd",
     to: email,
-    subject: `Message Received !!!!`,
+    subject: `Message Received !!!`,
     html: mailOutput1,
   };
 
