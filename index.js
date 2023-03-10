@@ -1,4 +1,4 @@
-require("dotenv").config();
+//require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 const corsOptions = {
-  origin: `https://samrat-alam.onrender.com:${port}`,//`${process.env.BASE_URL}:${port}`,
+  origin: `https://samrat-alam.herokuapp.com:${port}`,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
