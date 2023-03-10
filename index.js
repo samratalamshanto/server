@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 const corsOptions = {
-  origin: `https://samrat-alam.herokuapp.com:${port}`,
+  origin: `https://samrat-alam.onrender.com:${port}`,//`${process.env.BASE_URL}:${port}`,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -65,5 +65,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
+  // console.log(url);
+  //console.log(`${process.env.BASE_URL}:${port}`);
   console.log(`Server is listening @http://localhost:${port}`);
 });

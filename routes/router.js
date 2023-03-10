@@ -26,35 +26,33 @@ router.route("/create").post(async (req, res) => {
   var transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "alam1607022@stud.kuet.ac.bd",
+      user: "samrat.alam.keut@gmail.com",
       pass: process.env.EMAILPASS,
     },
   });
 
   var mailOutput =
-    "<html>\n\
-                        <body>\n\
-                        <table>\n\
-                        <tr>\n\
-                        <td>Name: </td>" +
-    name +
-    "<td></td>\n\
-                        </tr>\n\
-                        <tr>\n\
-                        <td>Email: </td><td>" +
-    email +
-    "</td>\n\
-                        </tr>\n\
-                        <tr>\n\
-                        <td>Message: </td>" +
-    msg +
-    "<td></td>\n\
-                        </tr>\n\
-                        </table></body></html>";
+    `  <body>
+    <table>
+      <tr>
+        <td>Name: </td>
+        <td>${name}</td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td><strong>${email}</strong></td>
+      </tr>
+      <tr>
+        <td>Message: </td>
+        <td><strong>${msg}</strong></td>
+      </tr>
+    </table>
+  </body>
+</html>`;
 
   var mailOptions = {
     from: email,
-    to: "alam1607022@stud.kuet.ac.bd",
+    to: "samrat.alam.keut@gmail.com",
     subject: `Sending Email from ${name}!!!!`,
     html: mailOutput,
   };
@@ -68,37 +66,38 @@ router.route("/create").post(async (req, res) => {
   });
 
   var mailOutput1 =
-    "<html>\n\
-  <body>\n\
-  <table>\n\
-  <tr>\n\
-  Hello Mr./Ms " +
-    name +
-    ",<td></td>\n\
-  </tr>\n\
-  <tr>\n\
-  <td>Thank you for your text. I’ll contact with you as soon as possible. Again Thank You for your time. Have a nice day.</td><td>" +
-    "</td>\n\
-  </tr>\n \n \n\
-  <tr>\n \n \n  Best Regards," +
-    "<td></td>\n\
-  </tr>\n\
-  <tr>\n\
-Samrat Alam " +
-    "<td></td>\n\
-    <tr>\n\
-B.Sc in CSE, KUET " +
-    "<td></td>\n\
-    <tr>\n\
-Mobile: 01674937832" +
-    "<td></td>\n\
-    <tr>\n\
-Mail: samratalamshanto710@gmail.com" +
-    "<td></td>\n\
-  </table></body></html>";
+    `
+  <html>
+    <body>
+      <table>
+        <tr>
+          <td>
+            Dear ${name},
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <br>Thank you for your message. I appreciate you taking the time to reach out to me.<br><br>I will be sure to get back to you as soon as possible. In the meantime, please feel free to let me know if you have any further questions or concerns.<br><br>Thank you again for contacting me.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <br>
+            Best regards,<br>
+            <strong>Samrat Alam</strong><br>
+            Software Developer @ Red.Digital Limited<br>
+            B.Sc in CSE, KUET<br>
+            Mobile: <strong>01674937832,01833183699</strong><br>
+            Email: <strong>samratalamshanto710@gmail.com</strong><br>
+          </td>
+        </tr>
+      </table>
+    </body>
+  </html>
+`;
 
   var mailOptions1 = {
-    from: "alam1607022@stud.kuet.ac.bd",
+    from: "samrat.alam.keut@gmail.com",
     to: email,
     subject: `Message Received !!!`,
     html: mailOutput1,

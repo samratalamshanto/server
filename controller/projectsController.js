@@ -1,10 +1,13 @@
 const projectDataModel = require("../mongoose/src/projectDataSchema");
 
 async function getProjectOnly(req, res, next) {
+  // console.log(projectDataModel.find());
   await projectDataModel
     .find()
     .sort("-date")
     .then((result) => {
+      console.log("hola back");
+      console.log(result);
       res.json({
         result,
       });
