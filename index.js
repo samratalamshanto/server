@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 const corsOptions = {
-  origin: `https://samrat-alam.onrender.com:${port}`,
+  origin: `https://samrat-alam.onrender.com:10000`,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
