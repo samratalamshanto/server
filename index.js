@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 const corsOptions = {
-  origin: `https://samrat-alam.onrender.com:10000`,
+  origin: `https://samrat-alam.onrender.com`,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -31,6 +31,11 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  next();
+});
+
+app.use(function (req, res, next) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
   next();
 });
 
